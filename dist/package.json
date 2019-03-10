@@ -1,0 +1,42 @@
+{
+  "name": "sequences",
+  "version": "0.1.0",
+  "description": "Uses react context mechanism to provide props indirectly",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/somesocks/react-props-provider.git"
+  },
+  "keywords": [
+    "react",
+    "context"
+  ],
+  "author": "James Larsen (somesocks@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/somesocks/react-props-provider/issues"
+  },
+  "homepage": "https://github.com/somesocks/react-props-provider",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^9.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "eslint": "^5.15.1",
+    "eslint-config-esnext": "^3.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.14.0",
+    "jsdoc-to-markdown": "^4.0.1",
+    "jsdom": "^14.0.0",
+    "mocha": "^5.2.0",
+    "react-dom": "^16.8.4"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4"
+  }
+}
