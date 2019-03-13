@@ -1,10 +1,10 @@
 /* eslint-env node, mocha */
 
-const React = require('react');
+import React from 'react';
 
-const { mount } = require('enzyme');
+import { mount } from 'enzyme';
 
-const PropsProvider = require('./');
+import { PropsProvider, PropsConsumer } from './';
 
 describe('react-props-provider', () => {
 	it('can import PropsProvider');
@@ -19,14 +19,14 @@ describe('react-props-provider', () => {
 	it(
 		'can pass props correctly',
 		() => {
-			const ExampleConsumer = PropsProvider.Consumer(
+			const ExampleConsumer = PropsConsumer(
 				(props) => {
 					console.log('ExampleConsumer props', props);
 					return (<div />);
 				}
 			);
 
-			const ExampleProvider = PropsProvider.Provider(
+			const ExampleProvider = PropsProvider(
 				(props) => {
 					console.log('ExampleProvider props', props);
 					return (<ExampleConsumer />);
@@ -40,7 +40,7 @@ describe('react-props-provider', () => {
 	it(
 		'can pass props correctly 2',
 		() => {
-			const ExampleConsumer = PropsProvider.Consumer(
+			const ExampleConsumer = PropsConsumer(
 				(props) => {
 					console.log('ExampleConsumer props', props);
 					return (<div />);
@@ -52,7 +52,7 @@ describe('react-props-provider', () => {
 				return (<ExampleConsumer />);
 			};
 
-			const ExampleProvider = PropsProvider.Provider(
+			const ExampleProvider = PropsProvider(
 				(props) => {
 					console.log('ExampleProvider props', props);
 					return (<ExampleMiddle />);
@@ -66,14 +66,14 @@ describe('react-props-provider', () => {
 	it(
 		'direct props take precedence',
 		() => {
-			const ExampleConsumer = PropsProvider.Consumer(
+			const ExampleConsumer = PropsConsumer(
 				(props) => {
 					console.log('ExampleConsumer props', props);
 					return (<div />);
 				}
 			);
 
-			const ExampleProvider = PropsProvider.Provider(
+			const ExampleProvider = PropsProvider(
 				(props) => {
 					console.log('ExampleProvider props', props);
 					return (<ExampleConsumer a="2" />);

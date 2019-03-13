@@ -1,5 +1,5 @@
 {
-  "name": "sequences",
+  "name": "react-props-provider",
   "version": "0.1.0",
   "description": "Uses react context mechanism to provide props indirectly",
   "main": "index.js",

@@ -1,5 +1,6 @@
+/** @namespace react-props-provider */
 
-const React = require('react');
+import React from 'react';
 
 const DEFAULT_CONTEXT_VALUE = {};
 const PropsContext = React.createContext(DEFAULT_CONTEXT_VALUE);
@@ -13,7 +14,36 @@ const DEFAULT_PROPS_FROM_CONTEXT = (props, context) => {
 	}
 };
 
-const Consumer = (reactClass, propsFromContext = DEFAULT_PROPS_FROM_CONTEXT) => {
+/**
+*
+* ```javascript
+*   import React from 'react'
+*   import { PropsConsumer } from 'react-props-provider'
+*
+*   // an example component
+*   let ExampleComponent = (props) => (
+*     <div>{props.name}</div>
+*   );
+*
+*   ExampleComponent = PropsConsumer(ExampleComponent);
+*
+*   // name will always be bob, since the prop is defined directly
+*   let a = (<ExampleComponent name="bob" />);
+*
+*   // if 'name' was provided by a parent component, it would be used
+*   let b = (<ExampleComponent />);
+* ```
+*
+* PropsConsumer is a React HOC that wraps a React class,
+* and returns a new React class that uses the props-provider context
+* to provide default props to the wrapped component
+*
+* @param {} reactClass - the react class / function to wrap with a prop.
+* @param {function} propsFromContext - an optional function to customize which context props you want to consume.
+* @returns {} a wrapped react class
+* @memberof react-props-provider
+*/
+const PropsConsumer = (reactClass, propsFromContext = DEFAULT_PROPS_FROM_CONTEXT) => {
 
 	class _propsConsumerInstance extends React.Component {
 		render() {
@@ -30,7 +60,34 @@ const Consumer = (reactClass, propsFromContext = DEFAULT_PROPS_FROM_CONTEXT) => 
 
 const DEFAULT_PROPS_TO_CONTEXT = (props, context) => ({ ...context, ...props });
 
-const Provider = (reactClass, propsToContext = DEFAULT_PROPS_TO_CONTEXT) => {
+/**
+*
+* ```javascript
+*   import React from 'react'
+*   import { PropsProvider } from 'react-props-provider'
+*
+*   // an example component
+*   let ExampleComponent = (props) => (
+*     <div>{props.name}</div>
+*   );
+*
+*   ExampleComponent = PropsProvider(ExampleComponent);
+*
+*   // ExampleComponent will provide 'name' as a contextual prop to any children
+*   let a = (<ExampleComponent name="bob" />);
+*
+* ```
+*
+* PropsConsumer is a React HOC that wraps a React class,
+* and returns a new React class that uses the props-provider context
+* to provide default props to the wrapped component
+*
+* @param {} reactClass - the react class / function to wrap with a prop.
+* @param {function} propsToContext - an optional function to customize which props are provided.
+* @returns {} a wrapped react class
+* @memberof react-props-provider
+*/
+const PropsProvider = (reactClass, propsToContext = DEFAULT_PROPS_TO_CONTEXT) => {
 
 	class _propsProviderInstance extends React.Component {
 		render() {
@@ -52,7 +109,7 @@ const Provider = (reactClass, propsToContext = DEFAULT_PROPS_TO_CONTEXT) => {
 
 };
 
-module.exports = {
-	Provider,
-	Consumer,
+export {
+	PropsProvider,
+	PropsConsumer,
 };
