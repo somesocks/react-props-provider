@@ -1,6 +1,22 @@
 # react-props-provider
 
-## About
+```javascript
+  import React from 'react'
+  import { PropsProvider, PropsConsumer } from 'react-props-provider'
+
+  let ExampleComponent = (props) => (
+    <div>hello {props.name}</div>
+  );
+	ExampleComponent = PropsConsumer(ExampleComponent);
+
+  let ExampleParent = (props) => (
+		<ExampleComponent />
+  );
+	ExampleParent = PropsProvider(ExampleParent);
+
+  // will render to <div>hello bob</div>
+  let a = (<ExampleParent name="bob" />);
+```
 
 ## API
 
