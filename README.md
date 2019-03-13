@@ -7,12 +7,12 @@
   let ExampleComponent = (props) => (
     <div>hello {props.name}</div>
   );
-	ExampleComponent = PropsConsumer(ExampleComponent);
+  ExampleComponent = PropsConsumer(ExampleComponent);
 
   let ExampleParent = (props) => (
-		<ExampleComponent />
+    <ExampleComponent />
   );
-	ExampleParent = PropsProvider(ExampleParent);
+  ExampleParent = PropsProvider(ExampleParent);
 
   // will render to <div>hello bob</div>
   let a = (<ExampleParent name="bob" />);
